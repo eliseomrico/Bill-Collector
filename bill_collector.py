@@ -16,7 +16,12 @@ def main():
         if screen_choice == '1':
             # View Bill Totals
             bills = db_obj.retreive_all_bills()
+            bill_total = 0
+            for bill in bills:
+                bill_total += bill[2]
             sc.view_bill_totals(bills)
+            print('======================================================')
+            print('Bill Total: ${:.2f}'.format(bill_total))
         elif screen_choice == '2':
             bill_info = sc.add_a_bill()
             db_obj.add_bill(bill_info)
