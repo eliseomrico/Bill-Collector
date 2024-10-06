@@ -1,4 +1,5 @@
 import os
+import csv_lib as clib
 
 def display_home_screen():
     os.system('clear')
@@ -8,6 +9,7 @@ def display_home_screen():
     print('(1) - View Bill Totals')
     print('(2) - Add a bill')
     print('(3) - Delete a bill')
+    print('(4) - Export data to csv')
     print()
     return input('Please enter the screen number you wish to see:\n')
 
@@ -43,7 +45,6 @@ def get_selected_bill_id(bills):
         print('You have no bills to delete!')
         return -1
 
-
 def delete_a_bill_screen(bills):
     os.system('clear')
     id = 1
@@ -57,3 +58,9 @@ def delete_a_bill_screen(bills):
     for bill in bills:
         print('{:5s}{:10s}{:5s}${:12s}{:5s}{}'.format('',str(id),'|',str(bill[2]),'|',str(bill[3])))
         id += 1
+
+def export_to_csv(bills):
+    user_choice = input("Do you want to export data to csv (y/n)?")
+
+    if str.lower(user_choice) == 'y':
+        clib.export_to_csv(bills)

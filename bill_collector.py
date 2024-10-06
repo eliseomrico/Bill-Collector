@@ -1,6 +1,7 @@
 import screens as sc
 from db import DB_Connection
 import sys
+import csv_lib as clib
 
 def main():
 
@@ -45,7 +46,9 @@ def main():
                     db_obj.delete_bill(bill_id)
                 else:
                     print('Bill deletion canceled!')
-            
+        elif screen_choice == '4':
+            bills = db_obj.retreive_all_bills()
+            clib.export_to_csv(bills)
         elif screen_choice == 'q':
             break
 
