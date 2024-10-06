@@ -30,19 +30,29 @@ def main():
         elif screen_choice == '3':
             
             bills = db_obj.retreive_all_bills()
-            sc.delete_a_bill(bills)
-            # Confirm bill deletion
 
-            # Delete bill
+            # Display delete bill screen and retrieve bill number
+            sc.delete_a_bill_screen(bills)
 
-            # Notify bill was deleted
+            # Get bill id
+            bill_id = sc.get_selected_bill_id(bills)
+
+            if bill_id != -1:
+                # Confirm bill deletion
+                deletion_confirmed = input('Are you sure you want to delete this bill (y/n)?: ')
+
+                if str.lower(deletion_confirmed) == 'y':
+                    db_obj.delete_bill(bill_id)
+                else:
+                    print('Bill deletion canceled!')
+            
         elif screen_choice == 'q':
-            keep_using = False
+            break
 
         print()
         keep_using = input('Return to home screen (y/n)?: ')
 
-        if keep_using == 'n':
+        if str.lower(keep_using) == 'n' or str.lower(keep_using) == 'q':
             keep_using = False
 
     # Print newline at the end of the program

@@ -40,3 +40,12 @@ class DB_Connection:
         # Close the connection when done
         self.cursor.close()
         self.conn.close()
+
+    def delete_bill(self, bill_id):
+        query = "DELETE FROM bills WHERE id = %s"
+        try:
+            self.cursor.execute(query, (bill_id,))  # Use a tuple for a single parameter
+            self.conn.commit()
+            print('Bill has been deleted successfully')
+        except:
+            print('Something went wrong bill not deleted.')

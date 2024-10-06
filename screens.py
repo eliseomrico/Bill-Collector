@@ -32,7 +32,19 @@ def add_a_bill():
     bill_due_date = input('Due Date: ')
     return (bill_name,bill_amount,bill_due_date)
 
-def delete_a_bill(bills):
+def get_selected_bill_id(bills):
+    # Get bill number to delete
+    print()
+    if len(bills) > 0:
+        print()
+        bill_number = input('Enter the bill number you want to delete: ')
+        return int(bills[int(bill_number)-1][0])
+    else:
+        print('You have no bills to delete!')
+        return -1
+
+
+def delete_a_bill_screen(bills):
     os.system('clear')
     id = 1
     print('{:19s}{}'.format('','Delete A Bill'))
@@ -45,15 +57,3 @@ def delete_a_bill(bills):
     for bill in bills:
         print('{:5s}{:10s}{:5s}${:12s}{:5s}{}'.format('',str(id),'|',str(bill[2]),'|',str(bill[3])))
         id += 1
-
-    print()
-
-    # Get bill number to delete
-    bill_number = input('Enter the bill number you want to delete: ')
-
-
-    # Confirm bill exists
-
-    # If bill does not exist request bill number again
-
-    # If it does return bill number
