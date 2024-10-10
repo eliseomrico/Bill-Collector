@@ -1,4 +1,5 @@
 import csv
+import subprocess
 
 def export_to_csv(bills):
 
@@ -13,3 +14,6 @@ def export_to_csv(bills):
         # Write the data
         for row in bills:
             writer.writerow(row)
+
+    subprocess.run(['open', filename])
+    
