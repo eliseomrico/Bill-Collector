@@ -24,10 +24,13 @@ def main():
             print('======================================================')
             print('Bill Total: ${:.2f}'.format(bill_total))
         elif screen_choice == '2':
-            bill_info = sc.add_a_bill()
-            db_obj.add_bill(bill_info)
-            print('\nBill has been added!')
-            input()    
+            add_more = True
+            while add_more:
+                bill_info = sc.add_a_bill()
+                db_obj.add_bill(bill_info)
+                print('\nBill has been added!\n')
+                if not input('Would you like to add another bill (y/n)? ') == 'y':
+                    add_more = False
         elif screen_choice == '3':
             
             bills = db_obj.retreive_all_bills()
