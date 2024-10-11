@@ -11,7 +11,6 @@ def display_home_screen():
     print('(3) - Delete a bill')
     print('(4) - Export data to csv')
     print()
-    return input('Please enter the screen number you wish to see:\n')
 
 def view_bill_totals(bills):
     os.system('clear')
